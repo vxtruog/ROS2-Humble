@@ -1,4 +1,4 @@
-# Tạo môi trường làm việc cho ROS2
+# 1. Tạo môi trường làm việc cho ROS2
 - Cài máy ảo để chạy trên Windows: Oracle VM VirtualBox.
 - Cài hệ điều hành
 	+ Nếu CPU yếu (nhỏ hơn 2GHz) thì cài Ubuntu 22.04 LTS (hỗ trợ bản ROS2 Humble) => tôi dùng bản này.
@@ -34,5 +34,16 @@
 - Cài đặt VS Code -> được tệp .deb -> Open with Software Install -> Install code
 - Cài đặt C/C++, CMake trong VS Code
 
+# 2. Turtlesim in ROS2
+- Dùng để làm quen với cách chạy node, topic, service, parameter, ...
+- `sudo apt install ros-humble-turtlesim -y`, cài đặt Turtlesim.
+- Node: turtlesim_node, turtle_teleop_key
+	+ `ros2 run turtlesim turtlesim_node`
+	+ `ros2 run turtlesim turtle_teleop_key`
+	+ `ros2 node list`, xem danh sách các node hiện đang hoạt động.
+	+ `ros2 node info <node_name>`, lấy thêm thông tin của node.
+	+ `ros2 topic list`, xem danh sách các topic hiện đang hoạt động.
+	+ `ros2 topic info <topic_name>`, lấy thêm thông tin của topic.
+	+ `ros2 service list`, xem danh sách các service hiện đang hoạt động.
 
 	
