@@ -19,49 +19,45 @@
 	+ `sudo apt install python3-colcon-common-extensions`
 
 - Cài đặt môi trường luôn chạy source khi mở Terminal
-	+ `cd ~/vxtruog_ros2/` -> `colcon build`
+	+ `cd ~/<folder_name>/` -> `colcon build`
 	+ `gedit ~/.bashrc`
 	+ thêm `source /opt/ros/humble/setup.bash`
-	+ thêm `source ~/vxtruog_ros2/install/setup.bash`
+	+ thêm `source ~/<folder_name>/install/setup.bash`
 	+ thêm `source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash`
 
-- Tạo package trong ~/vxtruog_ros2/src/ (chạy python thì tạo my_python_pkg, chạy c++ thì tạo my_cpp_pkg)
+- Tạo package trong ~/<folder_name>/src/ (chạy python thì tạo my_python_pkg, chạy c++ thì tạo my_cpp_pkg)
 	+ `ros2 pkg create my_python_pkg --build-type ament_python --dependencies rclpy`
 	+ `ros2 pkg create my_cpp_pkg --build-type ament_cmake --dependencies rclcpp`
-	+ `cd ~/vxtruog_ros2/` -> `colcon build`, build tất cả package sau mỗi lần thay đổi.
+	+ `cd ~/<folder_name>/` -> `colcon build`, build tất cả package sau mỗi lần thay đổi.
 	+ `colcon build --packages-select <package_name>`, build package chỉ định.
 
-- Cài đặt VS Code -> được tệp .deb -> Open with Software Install -> Install code
-- Cài đặt C/C++, CMake trong VS Code
+- Cài đặt VS Code -> được tệp .deb -> Open with Software Install -> Install code.
+- Cài đặt C/C++, CMake trong VS Code.
+- Cài đặt Turtlesim để làm quen với cách sử dụng ROS2
+	+ `sudo apt install ros-humble-turtlesim -y`.
 
-# 2. Turtlesim in ROS2
-- Dùng để làm quen với cách chạy node, topic, service, parameter, ...
-- `sudo apt install ros-humble-turtlesim -y`, cài đặt Turtlesim.
-- Node: turtlesim_node, turtle_teleop_key
-	+ `ros2 run turtlesim turtlesim_node`
-	+ `ros2 run turtlesim turtle_teleop_key`
-	+ `ros2 node list`, xem danh sách các node hiện đang hoạt động.
-	+ `ros2 node info <node_name>`, lấy thêm thông tin của node.
-	+ `ros2 topic list`, xem danh sách các topic hiện đang hoạt động.
-	+ `ros2 topic info <topic_name>`, lấy thêm thông tin của topic.
-	+ `ros2 service list`, xem danh sách các service hiện đang hoạt động.
 # 2. Tổng quan cấu trúc trong ROS2
 - Package là một thư mục dự án, chứa nhiều executable.
 - Executable là một chương trình thực thi trong package, khi chạy có thể sinh ra một hoặc nhiều node.
 - Node là một chương trình thực thi độc lập, khi chạy, node sẽ tham gia vào mạng ROS2 và có thể giao tiếp với các node khác.
 - Một node có thể dùng 4 cơ chế chính để giao tiếp:
   + Topics (publish - subscribe), giao tiếp một chiều giữa các node từ publisher đến subscriber, dùng khi muốn publisher gửi dữ liệu liên tục.
-  + Services (client - server), giao tiếp hai chiều đồng bộ giữa các node, dùng khi cần thực hiện một hành động cụ thể và chờ kết quả.
+  + Services (client - server), giao tiếp hai chiều đồng bộ giữa các node, dùng khi cần thực hiện một hành động cụ thể (gửi request) và chờ kết quả (đợi response).
   + Actions:
   + Parameters:
 
-# 3. Packages và executables
+# 3. Packages và Executables
 - `ros2 pkg list`: liệt kê tất cả các package có sẵn.
 - `ros2 pkg executables <pkg_name>`: liệt kê tất cả các chương trình thực thi của một package nào đó.
 - `ros2 run <pkg_name> <executable_name>`: chạy chương trình thực thi của một package.
+  
 # 4. Nodes
 - `ros2 node list`: liệt kê tất cả các node đang chạy.
 - `ros2 node info <node_name>`: xem thông tin của một node.
 
 # 5. Services
-- `ros2 service list`: liệt kê tất cả các service đang chạy
+- `ros2 service list`: liệt kê tất cả các service đang chạy.
+- `ros2 service type <service_name>`: tìm service_type của service (một service chỉ sử dụng một service_type).
+- `ros2 service find <service_type>`: tìm các service đang sử dụng service_type.
+- `ros2 interface show <service_type>`: xem chi tiết cấu trúc của một service_type, gồm các tham số request và các tham số response.
+- `ros2 service call <service_name> <service_type> "<request_data>"`:
