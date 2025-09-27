@@ -47,7 +47,7 @@
   + Topics (publish - subscribe), giao tiếp một chiều giữa các node từ publisher đến subscriber, dùng khi muốn publisher gửi dữ liệu liên tục, dữ liệu truyền trong topic được mô tả bằng một message_type.
   + Services (client - server), giao tiếp hai chiều đồng bộ giữa các node, dùng khi cần thực hiện một hành động cụ thể (gửi request) và chờ kết quả (đợi response).
   + Actions:
-  + Parameters:
+  + Parameters: các giá trị cấu hình bên trong một node, giúp thay đổi hành vi của node mà không phải build lại.
 
 # 3. Packages và Executables
 - `ros2 pkg list`: liệt kê tất cả các package có sẵn.
@@ -75,4 +75,14 @@
 - `ros2 interface show <service_type>`: xem chi tiết cấu trúc của một service_type, gồm các tham số request và các tham số response.
 - `ros2 service info <service_name>`: xem thông tin của một service.
 - `ros2 service call <service_name> <service_type> "<request_data>"`: gửi một request tới service trong ROS2.
+
+# 8. Parameters
+- `ros2 param list`: liệt kê tất cả các tham số.
+- `ros2 param get <node_name> <parameter_name>`: lấy giá trị của tham số.
+- `ros2 param set <node_name> <parameter_name> <value>`: đặt giá trị cho tham số.
+- `ros2 param dump <node_name>`: liệt kê tham số của một node.
+- `ros2 param dump <node_name> > <node_name>.yaml`: lưu trữ tham số vào tệp .yaml.
+- `ros2 param load <node_name> <node_name>.yaml`: tải tham số từ tệp .yaml.
+- `ros2 run <package_name> <executable_name> --ros-args --params-file <executable_name>.yaml`: đặt tham số từ tệp .yaml ngay khi chạy package.
+- `ros2 param delete <node_name> <parameter_name>`: xoá tham số, giữ nguyên giá trị tham số đang dùng tại thời điểm xoá và không thay đổi được tham số đó nữa.
 
