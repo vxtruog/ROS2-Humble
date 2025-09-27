@@ -25,7 +25,7 @@
   + thêm `source ~/<folder_name>/install/setup.bash`
   + thêm `source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash`
 
-- Tạo package trong ~/<folder_name>/src/ (chạy python thì tạo my_python_pkg, chạy c++ thì tạo my_cpp_pkg)
+- Tạo package trong `~/<folder_name>/src/` (chạy python thì tạo my_python_pkg, chạy c++ thì tạo my_cpp_pkg)
   + `ros2 pkg create my_python_pkg --build-type ament_python --dependencies rclpy`
   + `ros2 pkg create my_cpp_pkg --build-type ament_cmake --dependencies rclcpp`
   + `cd ~/<folder_name>/` -> `colcon build`, build tất cả package sau mỗi lần thay đổi.
@@ -35,9 +35,10 @@
 - Cài đặt C/C++, CMake trong VS Code.
 - Cài đặt Turtlesim để làm quen với cách sử dụng ROS2
   + `sudo apt install ros-humble-turtlesim -y`
-- Cài đặt ROS Qt-based framework giúp vẽ sơ đồ mạng lưới các node trong hệ thống ROS2
-  + `sudo apt install ros-<distro>-rqt-graph`
-  + `ros2 run rqt_graph rqt_graph`
+
+- Công cụ `rqt`
+  + `ros2 run rqt_graph rqt_graph`: quan sát cấu trúc mạng lưới các node, topic, service và action đang chạy.
+  + `ros2 run rqt_console rqt_console`: xem và quản lý log messages từ các node.
 
 # 2. Tổng quan cấu trúc trong ROS2
 - Package là một thư mục dự án, chứa nhiều executable.
@@ -92,3 +93,23 @@
 - `ros2 param load <node_name> <node_name>.yaml`: tải tham số từ tệp .yaml.
 - `ros2 run <package_name> <executable_name> --ros-args --params-file <executable_name>.yaml`: đặt tham số từ tệp .yaml ngay khi chạy package.
 - `ros2 param delete <node_name> <parameter_name>`: xoá tham số, giữ nguyên giá trị tham số đang dùng tại thời điểm xoá và không thay đổi được tham số đó nữa.
+
+# 9. Khởi động nhiều node chỉ với một lệnh
+- `ros2 launch <package_name> <file multisim.launch.py>`
+- multisim.launch.py
+```
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        # Node C++ 
+        Node(
+            package='my_cpp_package', executable='node_cpp', name='node_cpp'),
+
+        # Node Python
+        Node(
+            package='my_py_package', executable='node_py', name='node_py'
+        ),
+    ])
+```
