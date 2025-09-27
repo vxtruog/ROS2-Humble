@@ -45,5 +45,23 @@
 	+ `ros2 topic list`, xem danh sách các topic hiện đang hoạt động.
 	+ `ros2 topic info <topic_name>`, lấy thêm thông tin của topic.
 	+ `ros2 service list`, xem danh sách các service hiện đang hoạt động.
+# 2. Tổng quan cấu trúc trong ROS2
+- Package là một thư mục dự án, chứa nhiều executable.
+- Executable là một chương trình thực thi trong package, khi chạy có thể sinh ra một hoặc nhiều node.
+- Node là một chương trình thực thi độc lập, khi chạy, node sẽ tham gia vào mạng ROS2 và có thể giao tiếp với các node khác.
+- Một node có thể dùng 4 cơ chế chính để giao tiếp:
+  + Topics (publish - subscribe), giao tiếp một chiều giữa các node từ publisher đến subscriber, dùng khi muốn publisher gửi dữ liệu liên tục.
+  + Services (client - server), giao tiếp hai chiều đồng bộ giữa các node, dùng khi cần thực hiện một hành động cụ thể và chờ kết quả.
+  + Actions:
+  + Parameters:
 
-	
+# 3. Packages và executables
+- `ros2 pkg list`: liệt kê tất cả các package có sẵn.
+- `ros2 pkg executables <pkg_name>`: liệt kê tất cả các chương trình thực thi của một package nào đó.
+- `ros2 run <pkg_name> <executable_name>`: chạy chương trình thực thi của một package.
+# 4. Nodes
+- `ros2 node list`: liệt kê tất cả các node đang chạy.
+- `ros2 node info <node_name>`: xem thông tin của một node.
+
+# 5. Services
+- `ros2 service list`: liệt kê tất cả các service đang chạy
