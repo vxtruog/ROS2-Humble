@@ -40,6 +40,9 @@
   + `ros2 run rqt_graph rqt_graph`: quan sát cấu trúc mạng lưới các node, topic, service và action đang chạy.
   + `ros2 run rqt_console rqt_console`: xem và quản lý log messages từ các node.
 
+- Tài liệu tham khảo
+  + https://docs.ros2.org/foxy/api/rclcpp/namespacerclcpp.html, tìm hiểu về rclcpp.
+
 # 2. Tổng quan cấu trúc trong ROS2
 - Package là một thư mục dự án, chứa nhiều executable.
 - Executable là một chương trình thực thi trong package, khi chạy có thể sinh ra một hoặc nhiều node.
