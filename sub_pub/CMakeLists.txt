@@ -8,6 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 
+# edit #############################################################
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
@@ -21,6 +22,8 @@ install(TARGETS
   publisher_node
   subscriber_node
   DESTINATION lib/${PROJECT_NAME})
+#####################################################################
+  
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
