@@ -71,6 +71,9 @@
 - `ros2 topic pub --once <topic_name> <message_type> "<args>"`: publish dữ liệu đến topic chỉ một lần.
 - `ros2 topic pub --rate x <topic_name> <message_type> "<args>"`: publish dữ liệu đến topic liên tục với tần số `x` Hz.
 - `ros2 topic echo <topic_name>`: xem output của một topic.
+- `ros2 bag record -o <bag_name> <topic_name>`: bắt đầu lưu trữ lại thông tin của một topic.
+- `ros2 bag info <bag_name>`: xem thông tin của một bag đã ghi.
+- `ros2 bag play <bag_name>`: để robot hành động lại những gì đã ghi trong bag.
   
 # 6. Services
 - `ros2 service list`: liệt kê tất cả các service đang chạy.
