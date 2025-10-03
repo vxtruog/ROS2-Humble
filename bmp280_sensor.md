@@ -1,4 +1,17 @@
 # Cấu hình I2C trên Rapsberry Pi 4
+- Mở kết nối I2C
+```
+sudo nano /boot/config.txt
+# thêm dtparam=i2c_arm=on
+sudo reboot
+```
+- Kiểm tra thiết bị I2C
+```
+ls /dev/i2c-*
+#  /dev/i2c-1
+sudo i2cdetect -y 1
+# kiểm tra xem BMP280 có xuất hiện (thường 0x76 hoặc 0x77)
+```
 # Viết node C++ trên ROS2
 - Tạo package
 ```
@@ -168,4 +181,19 @@ int main(int argc, char *argv[]) {
     rclcpp::shutdown();
     return 0;
 }
+```
+- Trong CMakelists.txt thêm
+```
+add_executable(bmp280_node src/bmp280_node.cpp)
+ament_target_dependencies(bmp280_node rclcpp sensor_msgs)
+
+install(TARGETS
+  bmp280_node
+  DESTINATION lib/${PROJECT_NAME})
+```
+- Build và chạy
+```
+colcon build --packages-select bmp280_reader
+source install/setup.bash
+ros2 run bmp280_reader bmp280_node
 ```
