@@ -19,6 +19,10 @@ sudo nano /etc/udev/rules.d/99-i2c.rules
 sudo udevadm control --reload-rules
 sudo udevadm trigger
 ```
+- Thêm user vào nhóm i2c
+```
+sudo usermod -aG i2c $USER
+```
 
 # Viết node C++ trên ROS2
 - Tạo package
