@@ -12,6 +12,14 @@ ls /dev/i2c-*
 sudo i2cdetect -y 1
 # kiểm tra xem BMP280 có xuất hiện (thường 0x76 hoặc 0x77)
 ```
+- Chuyển group của thiết bị thành i2c
+```
+sudo nano /etc/udev/rules.d/99-i2c.rules
+# thêm KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
 # Viết node C++ trên ROS2
 - Tạo package
 ```
