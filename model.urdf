@@ -11,7 +11,7 @@
     <!-- xyz - x, y, z toạ độ ba 3D -->
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <material name="blue">
-        <color rgba-"0 1 0 1"/>
+        <color rgba="0 1 0 1"/>
       </material>
     </visual>
   </link>
