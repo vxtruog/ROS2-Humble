@@ -28,3 +28,23 @@
 <xacro:property name="body_mass" value="${body_density*body_link_x_dim*body_link_y_dim*body_link_z_dim}"/>
 <xacro:property name="wheel_mass" value="${wheel_density*pi_const*wheel_link_radius*wheel_link_radius*wheel_link_length}"/>
 <xacro:property name="caster_mass" value="${caster_density*(4.0/3.0)*pi_const*caster_link_radius*caster_link_radius*caster_link_radius}"/>
+
+<!-- Moments of inertia of the wheel -->
+<xacro:property name="Iz_wheel" value="${0.5*wheel_mass*wheel_link_radius*wheel_link_radius}"/>
+<xacro:property name="I_wheel" value="${(1.0/12.0)*wheel_mass*(3.0*wheel_link_radius*wheel_link_radius+wheel_link_length*wheel_link_length)}"/>
+
+<!-- Moments of inertia of the caster sphere -->
+<xacro:property name="I_caster" value="${(2.0/5.0)*caster_mass*caster_link_radius*caster_link_radius}"/>
+
+<!-- This macro defines the complete inertial section of the wheel -->
+<xacro:macro name="inertia_wheel">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <mass value="${wheel_mass}"/>
+    <inertia ixx="${I_wheel}" ixy="0.0" ixz="0.0" iyy="${I_wheel}" iyz="0" izz="${Iz_wheel}"/>
+  <inertial>
+</xacro:macro>
+
+
+
+
