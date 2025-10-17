@@ -59,7 +59,7 @@
   
   <!-- We need to have this dummy link otherwise Gazebo will complain -->
   <link name="dummy">
-  <\link>
+  </link>
   <joint name="dummy_joint" type="fixed">
     <parent link="dummy"/>
     <child link="body_link"/>
