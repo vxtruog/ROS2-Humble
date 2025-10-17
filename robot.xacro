@@ -42,7 +42,7 @@
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <mass value="${wheel_mass}"/>
       <inertia ixx="${I_wheel}" ixy="0.0" ixz="0.0" iyy="${I_wheel}" iyz="0" izz="${Iz_wheel}"/>
-    <inertial>
+    </inertial>
   </xacro:macro>
   
   <!-- This macro defines the complete inertial section of the caster -->
@@ -137,7 +137,7 @@
         <sphere radius="${caster_link_radius}"/>
       </geometry>
     </collision>
-    <xacro:interia_caster/>
+    <xacro:inertia_caster/>
   </link>
 
 </robot>
