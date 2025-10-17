@@ -30,3 +30,9 @@ def generate_launch_description():
                 'use_sim_time': True}]
   )
 
+  launchDescriptionObject = LaunchDescription()
+  launchDescriptionObject.add_action(gazeboLaunch)
+  launchDescriptionObject.add_action(spawnModelNode)
+  launchDescriptionObject.add_action(nodeRobotStatePublisher)
+
+  return launchDescriptionObject
