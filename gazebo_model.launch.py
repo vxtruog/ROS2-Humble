@@ -12,7 +12,7 @@ def generate_launch_description():
   namePackage = 'mobile_dd_robot'
   modelFileRelativePath = 'model/robot.xacro'
   worldFileRelativePath = 'model/empty_world.world'
-  pathModeFile = os.path.join(get_package_share_directory(namePackage), modelFileRelativePath)
+  pathModelFile = os.path.join(get_package_share_directory(namePackage), modelFileRelativePath)
   pathWorldFile = os.path.join(get_package_share_directory(namePackage), modelFileRelativePath)
   robotDescription = xacro.process_file(pathModelFile).toxml()
 
