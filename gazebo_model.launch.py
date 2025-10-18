@@ -13,7 +13,7 @@ def generate_launch_description():
   modelFileRelativePath = 'model/robot.xacro'
   worldFileRelativePath = 'model/empty_world.world'
   pathModelFile = os.path.join(get_package_share_directory(namePackage), modelFileRelativePath)
-  pathWorldFile = os.path.join(get_package_share_directory(namePackage), modelFileRelativePath)
+  pathWorldFile = os.path.join(get_package_share_directory(namePackage), worldFileRelativePath)
   robotDescription = xacro.process_file(pathModelFile).toxml()
 
   gazebo_rosPackageLaunch = PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('gazebo_ros'),
