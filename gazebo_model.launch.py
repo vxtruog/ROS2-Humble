@@ -18,7 +18,7 @@ def generate_launch_description():
 
   gazebo_rosPackageLaunch = PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('gazebo_ros'),
                                                                       'launch', 'gazebo.launch.py'))
-  gazeboLaunch = IncludeLaunchDescription(gazebo_rosPackageLaunch, launch_arguments={'world': pathWorldFile}.items())
+  gazeboLaunch = IncludeLaunchDescription(gazebo_rosPackageLaunch, launch_arguments={'world': pathWorldFile, 'use_sim_time': True}.items())
   spawnModelNode = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-topic', 'robot_description', '-entity', robotXacroName], output='screen')
 
@@ -32,7 +32,7 @@ def generate_launch_description():
 
   launchDescriptionObject = LaunchDescription()
   launchDescriptionObject.add_action(gazeboLaunch)
-  launchDescriptionObject.add_action(spawnModelNode)
   launchDescriptionObject.add_action(nodeRobotStatePublisher)
+  launchDescriptionObject.add_action(spawnModelNode)
 
   return launchDescriptionObject
