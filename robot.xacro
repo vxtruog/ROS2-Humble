@@ -55,7 +55,7 @@
   </xacro:macro>
   
   <!-- Over here we include the file that defines extra Gazebo options and motion control driver -->
-  <xacro:include filename="$(find mobile_dd_robot)/model/robot.gazebo"/>
+  <xacro:include filename="$(find mobile_dd_robot)/model/robot.gazebo.xacro"/>
   
   <!-- We need to have this dummy link otherwise Gazebo will complain -->
   <link name="dummy">
